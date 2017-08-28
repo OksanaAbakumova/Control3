@@ -27,7 +27,7 @@ namespace Control3
         };
             // 1. год издания-высокосный и содержит LINQ
 
-            var containsLINQ = data.Where(f => f.Name.Contains("LINQ")).Where(k=>k.Year%2==0);
+            var containsLINQ = data.Where(f => f.Name.Contains("LINQ")).Where(k => DateTime.IsLeapYear(k.Year));
 
             foreach (var item in containsLINQ)
                 Console.WriteLine(item.Name);
@@ -44,10 +44,10 @@ namespace Control3
 
             //3.
 
-            int[] myArr = {14,12,23,20,33,32,37};
+            int[] myArr = { 14, 12, 23, 20, 33, 32, 37 };
 
             var sortedNumbers = myArr.OrderBy(i => i.ToString().First()).ThenByDescending(i => i.ToString().Last());
-            
+
             foreach (var item in sortedNumbers)
                 Console.WriteLine(item);
 
@@ -57,13 +57,13 @@ namespace Control3
             //4. 
 
             var booksA = data.GroupBy(f => f.Author).Select(item => item.Key + " " + item.Count());
-           
+
             foreach (var item in booksA)
                 Console.WriteLine(item);
 
             Console.WriteLine("-------------------------");
 
-          
+
         }
     }
 }
